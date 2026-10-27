@@ -1,5 +1,14 @@
 # Free My TV (Nook TV)
 
+<p align="center">
+<img src=".github/preview.webp" width="720" alt="Free My TV home screen">
+</p>
+
+<p align="center">
+<img src="docs/assets/day.webp" width="360" alt="Day theme">
+<img src="docs/assets/drawer-poster.webp" width="360" alt="Drawer with weather and prices">
+</p>
+
 Project layout for this repo:
 - `app/`: the web app (HTML, CSS, JavaScript) shown on the TV
 - `tools/`: helper scripts (Python) used to build and install
