@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Free My TV Phone: sends this phone's notifications to Free My TV on the TV (over the home Wi-Fi). Built by
+     phone/build.sh; the TV serves it to the phone from its pairing page (app/assets/phone.apk). -->
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="io.freemytv.phone"
+    android:versionCode="2"
+    android:versionName="2.0">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <!-- Android 11+: the apps with a launcher icon, for their names and icons (the list and the alerts). -->
+    <queries>
+        <intent>
+            <action android:name="android.intent.action.MAIN" />
+            <category android:name="android.intent.category.LAUNCHER" />
+        </intent>
+    </queries>
+
+    <!-- Cleartext: the TV is on the home network, with no certificate (the pairing key goes with every alert). -->
+    <application
+        android:label="Nook Phone"
+        android:icon="@drawable/icon"
+        android:allowBackup="false"
+        android:usesCleartextTraffic="true"
+        android:theme="@android:style/Theme.DeviceDefault.Light.NoActionBar">
+
+        <!-- Opens first: the TV's remote (Remote, Control, Cleanup, Days), the phone's volume buttons on the TV. -->
+        <activity
+            android:name=".RemoteActivity"
+            android:exported="true"
+            android:launchMode="singleTask"
+            android:configChanges="orientation|screenSize|keyboardHidden"
+            android:windowSoftInputMode="adjustResize">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <!-- Share → Nook: links open on the TV, text is typed there, photos join the wallpapers. -->
+        <activity
+            android:name=".ShareActivity"
+            android:exported="true"
+            android:label="Nook TV"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar"
+            android:excludeFromRecents="true">
+            <intent-filter>
+                <action android:name="android.intent.action.SEND" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <data android:mimeType="text/plain" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.SEND" />
+                <action android:name="android.intent.action.SEND_MULTIPLE" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <data android:mimeType="image/*" />
+            </intent-filter>
+        </activity>
+
+        <!-- Setup: pairing, notification access, which apps' alerts go to the TV (the remote's gear). -->
+        <activity
+            android:name=".MainActivity"
+            android:exported="true"
+            android:launchMode="singleTask">
+            <!-- The TV's pairing page opens freemytv://pair?u=<the TV's address>&k=<key>. -->
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <data android:scheme="freemytv" android:host="pair" />
+            </intent-filter>
+        </activity>
+
+        <service
+            android:name=".Forwarder"
+            android:exported="true"
+            android:label="Nook"
+            android:permission="android.permission.BIND_NOTIFICATION_LISTENER_SERVICE">
+            <intent-filter>
+                <action android:name="android.service.notification.NotificationListenerService" />
+            </intent-filter>
+        </service>
+    </application>
+</manifest>

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- The app fading in over the home screen's full-screen opening card (HomeView.startLaunch). -->
+<alpha xmlns:android="http://schemas.android.com/apk/res/android"
+    android:fromAlpha="0"
+    android:toAlpha="1"
+    android:duration="260"
+    android:interpolator="@android:interpolator/decelerate_quad" />
