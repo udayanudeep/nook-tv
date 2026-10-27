@@ -1,5 +1,17 @@
 # Free My TV (Nook TV)
 
+## My Nook
+
+<p align="center">
+<img src="docs/screenshots/home.png" width="720" alt="Nook home screen with the app shelf">
+</p>
+
+<p align="center">
+<img src="docs/screenshots/settings.png" width="720" alt="Nook settings">
+</p>
+
+## Examples (sample images from the original project)
+
 <p align="center">
 <img src=".github/preview.webp" width="720" alt="Free My TV home screen">
 </p>
