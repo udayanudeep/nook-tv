@@ -1,37 +1,3 @@
-# Free My TV (Nook TV)
-
-## My Nook
-
-<p align="center">
-<img src="docs/screenshots/home.png" width="720" alt="Nook home screen with the app shelf">
-</p>
-
-<p align="center">
-<img src="docs/screenshots/settings.png" width="720" alt="Nook settings">
-</p>
-
-## Examples (sample images from the original project)
-
-<p align="center">
-<img src=".github/preview.webp" width="720" alt="Free My TV home screen">
-</p>
-
-<p align="center">
-<img src="docs/assets/day.webp" width="360" alt="Day theme">
-<img src="docs/assets/drawer-poster.webp" width="360" alt="Drawer with weather and prices">
-</p>
-
-Project layout for this repo:
-- `app/`: the web app (HTML, CSS, JavaScript) shown on the TV
-- `tools/`: helper scripts (Python) used to build and install
-- `webos/`, `tizen/`: TV packaging for LG and Samsung
-- `web/`: the public website
-- `docs/`: documentation and assets
-- `build.sh`: builds the packages
-- `config.example.properties`: copy to `config.properties` and fill in your own settings. `config.properties` is not included because it holds your keys.
-
----
-
 <div align="center">
 
 <img src="docs/assets/icon-512.png" width="96" alt="">
